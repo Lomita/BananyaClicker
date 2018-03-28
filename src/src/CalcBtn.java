@@ -2,15 +2,13 @@ package src;
 import java.awt.*;
 import javax.swing.*;
 
-public class CalcBtn extends StartInterface
+@SuppressWarnings("serial")
+public class CalcBtn extends ClickerInterface
 {
 	private InterfaceHelper IFH = new InterfaceHelper();
 	
 	private Dimension screenSize;
 	private JButton bBanya;
-	
-	//private int ScreenWidth = (int)(IFH.getScreenResolution().getWidth());
-	//private int ScreenHeight = (int)(IFH.getScreenResolution().getHeight()); 
 	
 	public CalcBtn()
 	{
@@ -21,16 +19,19 @@ public class CalcBtn extends StartInterface
 		bBanya.setBorder(null);
 
 		mainWnd.add(bBanya);
-		//bBanya.addActionListener(this);
+		bBanya.addActionListener();
 	}
 			
-	private Dimension ranLoc()
+	private void ChangeLocation()
 	{
-		int ranWidth = ((int)(Math.random()*ScreenWidth)+1);
-		int ranHeight = ((int)(Math.random()*ScreenHeight)+1);
-		
-		screenSize = new Dimension(ranWidth,ranHeight);
-		
-		return screenSize;
+		int width, height;
+		width = mainWnd.getWidth()-100;
+		height = mainWnd.getHeight()-150;
+
+		@SuppressWarnings("unused")
+		int z = (int)(Math.random()*1000+1);
+
+		bClick = new JButton ();
+		bClick.setBounds(((int)(Math.random()*width)+1),((int)(Math.random()*height)+1),100,100);
 	}
 }

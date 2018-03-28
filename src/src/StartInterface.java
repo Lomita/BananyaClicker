@@ -15,11 +15,10 @@ public class StartInterface extends JFrame implements ActionListener
 		
 	public JFrame mainWnd; 
 	public JFrame msgBox; 
-	private JPanel logInPanel;
-	 
+
 	private JButton bstartGame, bexit;
 	private JTextField tfname;
-	private JComboBox cbrace;
+	private JComboBox<String> cbrace;
 	private JLabel limg, ltitel;
 	private String name, race;
 	
@@ -34,9 +33,8 @@ public class StartInterface extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Create the start dialog for BC
+	 * Create the start dialog for BananyaClicker
 	 */
-	@SuppressWarnings("unchecked")
 	public void createInterface()
 	{
 		mainWnd = new JFrame();
@@ -60,7 +58,7 @@ public class StartInterface extends JFrame implements ActionListener
 		tfname.setBounds(150,200,150,35);		
 		
 		String[] raceStr = {"Blue Bananya","Red Bananya","Black Bananya","White Bananya"};
-		cbrace = new JComboBox(raceStr);
+		cbrace = new JComboBox<String>(raceStr);
 		cbrace.setBounds(150,250,150,45);
 		cbrace.setSelectedIndex(3);
 			

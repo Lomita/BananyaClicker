@@ -13,9 +13,11 @@ public class ModeInterface extends JFrame implements ActionListener
 {
 	private InterfaceHelper IFH = new InterfaceHelper();
 	
-	private JFrame mainWnd;
-	private JButton bStandard, bTime;
-	private JLabel lmode, limg;
+	private JFrame mainWnd, TimeBox;
+	private JButton bStandard, bTime, bok;
+	private JLabel lmode, limg, lmsg;
+	private JTextField tftime;
+	private int time = 0;
 	
 	protected int ScreenWidth = (int)(IFH.getScreenResolution().getWidth());
 	protected int ScreenHeight = (int)(IFH.getScreenResolution().getHeight()); 
@@ -28,7 +30,7 @@ public class ModeInterface extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Create the mode dialog for bc
+	 * Create the mode dialog for BananyaClicker
 	 */
 	public void createInterface()
 	{
@@ -70,26 +72,32 @@ public class ModeInterface extends JFrame implements ActionListener
 		bTime.addActionListener(this);
 	}
 	
-	public int SendMsgBox(String msg)
+	public void SendTimeBox()
 	{
-		int time = 0;
-		JFrame msgBox = new JFrame();
+		TimeBox = new JFrame();
 		
-		msgBox.setSize(mainWnd.getWidth() / 4, mainWnd.getHeight() / 4);
-		msgBox.setLocation(ScreenWidth / 2, ScreenHeight / 2);
-		msgBox.setLayout(new BorderLayout());
-		msgBox.setUndecorated(true);
+		TimeBox.setSize(mainWnd.getWidth() / 4, mainWnd.getHeight() / 4);
+		TimeBox.setLocation(ScreenWidth / 2, ScreenHeight / 2);
+		TimeBox.setLayout(new BorderLayout());
+		TimeBox.setUndecorated(true);
 		
-		JTextField tfname = new JTextField(time);
-		tfname.setBounds(0,200,80,50);
+		tftime = new JTextField(time); 
+		tftime.setBounds(0,200,80,50);
 		
-		JLabel lmsg = new JLabel(msg);
+		lmsg = new JLabel(" Time: ");
 		lmsg.setBounds(0, 0, 200, 50);
 		lmsg.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
 		
-		msgBox.add(lmsg, BorderLayout.CENTER);
-		msgBox.setVisible(true);
-		return time;
+		bok = new JButton("Ok");
+		bok.setBounds(0,400,50,50);
+		bok.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
+		
+		TimeBox.add(lmsg, BorderLayout.WEST);
+		TimeBox.add(tftime, BorderLayout.CENTER);
+		TimeBox.add(bok, BorderLayout.EAST);
+		TimeBox.setVisible(true);
+		
+		bok.addActionListener(this);
 	}
 
 	/**
@@ -101,15 +109,29 @@ public class ModeInterface extends JFrame implements ActionListener
 		{
 			mainWnd.dispose();
 			ClickerInterface ci = new ClickerInterface();
+			ci.creatInterface();
+			ci.OsuMoveButton();
 		}
 		else if(event.getSource() == bTime)
 		{
 			mainWnd.dispose();
-			
-			int time = SendMsgBox("Time");
-			
-			ClickerInterface ci = new ClickerInterface();
-			ci.setTime(time);
+			SendTimeBox();
+		}
+		else if(event.getSource() == bok)
+		{
+			if(tftime.getText().matches("[0-9]*"))
+			{
+				time = Integer.parseInt(tftime.getText());
+				if (!(time <= 0))
+				{
+					TimeBox.dispose();
+					ClickerInterface ci = new ClickerInterface();
+					ci.setTime(time);
+					ci.creatInterface();
+					ci.OsuMoveButton();
+				}
+			}
+
 		}
 	}	
 }
