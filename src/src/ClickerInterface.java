@@ -17,14 +17,16 @@ public class ClickerInterface extends JFrame implements ActionListener
 	
 	private int ScreenFrameWidth = (int)(IFH.getScreenResolution().getWidth());
 	private int ScreenHeight = (int)(IFH.getScreenResolution().getHeight()); 
-
+	
 	private JFrame mainWnd;
 	private JButton bBananya, bEnd, bBackToMenu, bTime;							
 	private JLabel limg, lCount, lTime, lGreat, lCountTimerA;						
 
+	private JList list;
+	private DefaultListModel model = new DefaultListModel();
+	
 	private int count = 0, time = 0, Rtime, FrameHeight, FrameWidth; 		
 	private boolean isTimeMode;
-	
 	
 	/**
 	 * Constructor
@@ -153,25 +155,35 @@ public class ClickerInterface extends JFrame implements ActionListener
 		lGreat.setBounds(680,300,400,100);
 		lGreat.setFont(new Font("Arial", Font.BOLD, 40));
 
-		lCountTimerA = new JLabel();
-		lCountTimerA.setBounds(650,400,1000,50);
-		lCountTimerA.setFont(new Font("Arial", Font.BOLD, 24));
-		
+		/*
 		if(isTimeMode)
-		{
-			lCountTimerA.setText(count + " Bananya's gefangen in " + Rtime + "s ");
-		}
+			String[] data = {count + " Bananya's cSatched in " + "s ","B","C"};
 		else
-		{
-			lCountTimerA.setText(count + " Bananya's gefangen!");
-		}
+			String[] data = {count + " Bananya's catched!","B","C"};
+		
+		*/
+	    
+	    list = new JList(data);
+	    list.setLocation(670,400);
+	    list.setSize(100,50);
+	    list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+	    list.setVisibleRowCount(3);
+		list.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));
+		
+		/*
+		JScrollPane listScroller = new JScrollPane(list);
+		listScroller.setPreferredSize(new Dimension(250, 80));
+		*/
 		
 		bBackToMenu = new JButton ("Back to menu");
-		bBackToMenu.setBounds(720,500,150,30);
-
+		bBackToMenu.setBounds(720,500,200,50);
+		bBackToMenu.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));
+		
 		mainWnd.add(lGreat);
 		mainWnd.add(lCountTimerA);
 		mainWnd.add(bBackToMenu);
+		mainWnd.add(list);
+		
 		mainWnd.repaint();
 		
 		bBackToMenu.addActionListener(this);
