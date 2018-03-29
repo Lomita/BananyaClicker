@@ -19,20 +19,25 @@ public class ClickerInterface extends JFrame implements ActionListener
 	private int ScreenHeight = (int)(IFH.getScreenResolution().getHeight()); 
 	
 	private JFrame mainWnd;
-	private JButton bBananya, bEnd, bBackToMenu, bTime;							
-	private JLabel limg, lCount, lTime, lGreat, lCountTimerA;						
+	private JButton bBananya, bEnd, bBackToMenu;							
+	private JLabel limg, lCount, lTime, lGreat;						
 
-	private JList list;
-	private DefaultListModel model = new DefaultListModel();
+	private JList<String> list;
 	
+	@SuppressWarnings("unused")
 	private int count = 0, time = 0, Rtime, FrameHeight, FrameWidth; 		
 	private boolean isTimeMode;
+	private String name, color;
 	
 	/**
 	 * Constructor
+	 * @param color
+	 * @param name
 	 */
-	public ClickerInterface()
+	public ClickerInterface(String color, String name)
 	{
+		this.color = color;
+		this.name = name;
 		isTimeMode = false;
 	}
 
@@ -155,38 +160,47 @@ public class ClickerInterface extends JFrame implements ActionListener
 		lGreat.setBounds(680,300,400,100);
 		lGreat.setFont(new Font("Arial", Font.BOLD, 40));
 
-		/*
-		if(isTimeMode)
-			String[] data = {count + " Bananya's cSatched in " + "s ","B","C"};
-		else
-			String[] data = {count + " Bananya's catched!","B","C"};
+		String Msg;
 		
-		*/
+		if(isTimeMode)
+			Msg = "Bananya's catched: " + count + " in " + Rtime + "s ";
+		else
+			Msg = "Bananya's catched: " + count;
+		
+		String[] data = {"Player: " + name ,Msg ,"Bananya Color: " + color};
 	    
-	    list = new JList(data);
+		list = new JList<String>(data);
 	    list.setLocation(670,400);
-	    list.setSize(100,50);
-	    list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-	    list.setVisibleRowCount(3);
+	    list.setSize(450,125);
 		list.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));
 		
-		/*
-		JScrollPane listScroller = new JScrollPane(list);
-		listScroller.setPreferredSize(new Dimension(250, 80));
-		*/
-		
 		bBackToMenu = new JButton ("Back to menu");
-		bBackToMenu.setBounds(720,500,200,50);
+		bBackToMenu.setBounds(720,600,200,50);
 		bBackToMenu.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));
 		
 		mainWnd.add(lGreat);
-		mainWnd.add(lCountTimerA);
 		mainWnd.add(bBackToMenu);
 		mainWnd.add(list);
 		
 		mainWnd.repaint();
 		
 		bBackToMenu.addActionListener(this);
+	}
+	
+	private int getIndexFromColor(String color)
+	{
+		int idx = 0;
+		
+		if(color.equals("Blue Bananya"))
+			idx = 0;
+		else if(color.equals("Red Bananya"))
+			idx = 1;
+		else if(color.equals("Black Bananya"))
+			idx = 2;
+		else if(color.equals("White Bananya"))
+			idx = 3;
+		
+		return idx;
 	}
 
 	/**
@@ -209,8 +223,9 @@ public class ClickerInterface extends JFrame implements ActionListener
 		else if (event.getSource() == bBackToMenu)
 		{
 			mainWnd.dispose();
-			@SuppressWarnings("unused")
 			StartInterface menu = new StartInterface();
+			menu.setName(name);
+			menu.setColor(getIndexFromColor(color));
 			menu.createInterface();
 		}	
 	}

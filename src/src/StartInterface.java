@@ -22,6 +22,7 @@ public class StartInterface extends JFrame implements ActionListener
 	private JLabel limg, ltitel;
 	private String name, race;
 	
+	private int idx;
 	protected int ScreenWidth = (int)(IFH.getScreenResolution().getWidth());
 	protected int ScreenHeight = (int)(IFH.getScreenResolution().getHeight()); 
 
@@ -30,6 +31,8 @@ public class StartInterface extends JFrame implements ActionListener
 	 */	
 	public StartInterface()
 	{
+		name = "";
+		idx = 3;
 	}
 	
 	/**
@@ -54,13 +57,13 @@ public class StartInterface extends JFrame implements ActionListener
 		ltitel = new JLabel("Bananya Clicker");
 		ltitel.setBounds(150,50,500,150);
 		
-		tfname = new JTextField("");
+		tfname = new JTextField(name);
 		tfname.setBounds(150,200,150,35);		
 		
 		String[] raceStr = {"Blue Bananya","Red Bananya","Black Bananya","White Bananya"};
 		cbrace = new JComboBox<String>(raceStr);
 		cbrace.setBounds(150,250,150,45);
-		cbrace.setSelectedIndex(3);
+		cbrace.setSelectedIndex(idx);
 			
 		bstartGame = new JButton("Start");
 		bstartGame.setBounds(150,430,250,50);
@@ -94,7 +97,7 @@ public class StartInterface extends JFrame implements ActionListener
 	 * @param msg
 	 * @param jframe
 	 */
-	public void SendMsgBox(String msg)
+	private void SendMsgBox()
 	{
 		msgBox = new JFrame();
 		
@@ -102,13 +105,24 @@ public class StartInterface extends JFrame implements ActionListener
 		msgBox.setLocation(ScreenWidth / 2, ScreenHeight / 2);
 		msgBox.setLayout(new BorderLayout());
 		
-		JLabel lmsg = new JLabel(msg);
+		JLabel lmsg = new JLabel("Name to short!");
 		lmsg.setBounds(0, 0, msgBox.getWidth() - 5, msgBox.getHeight() - 50);
 		lmsg.setFont(new Font("Arial", Font.CENTER_BASELINE, 26));
 		
 		msgBox.add(lmsg, BorderLayout.CENTER);
 		msgBox.setVisible(true);
 	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public void setColor(int idx)
+	{
+		this.idx = idx;
+	}
+	
 	
 	/**
 	 * actionPerformer 
@@ -120,7 +134,7 @@ public class StartInterface extends JFrame implements ActionListener
 			name = tfname.getText();
 			if(name.equals(""))
 			{
-				SendMsgBox("Name to short!");
+				SendMsgBox();
 				name = null;
 			}
 			
@@ -130,7 +144,8 @@ public class StartInterface extends JFrame implements ActionListener
 			{
 				mainWnd.removeAll();
 				mainWnd.dispose();
-				ModeInterface MI = new ModeInterface();
+				
+				ModeInterface MI = new ModeInterface((String)cbrace.getSelectedItem(),tfname.getText());
 				MI.createInterface();
 			}
 		}

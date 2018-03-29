@@ -22,11 +22,17 @@ public class ModeInterface extends JFrame implements ActionListener
 	protected int ScreenWidth = (int)(IFH.getScreenResolution().getWidth());
 	protected int ScreenHeight = (int)(IFH.getScreenResolution().getHeight()); 
 	
+	private String color, name;
+	
 	/**
-	 * Constructor 
-	 */	
-	public ModeInterface()
+	 * Constructor
+	 * @param color
+	 * @param name
+	 */
+	public ModeInterface(String color, String name)
 	{
+		this.color = color;
+		this.name = name;
 	}
 	
 	/**
@@ -108,7 +114,7 @@ public class ModeInterface extends JFrame implements ActionListener
 		if(event.getSource() == bStandard)
 		{
 			mainWnd.dispose();
-			ClickerInterface ci = new ClickerInterface();
+			ClickerInterface ci = new ClickerInterface(color,name);
 			ci.creatInterface();
 			ci.OsuMoveButton();
 		}
@@ -125,7 +131,7 @@ public class ModeInterface extends JFrame implements ActionListener
 				if (!(time <= 0))
 				{
 					TimeBox.dispose();
-					ClickerInterface ci = new ClickerInterface();
+					ClickerInterface ci = new ClickerInterface(color,name);
 					ci.setTime(time);
 					ci.creatInterface();
 					ci.OsuMoveButton();
