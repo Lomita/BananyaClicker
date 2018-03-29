@@ -123,7 +123,6 @@ public class StartInterface extends JFrame implements ActionListener
 		this.idx = idx;
 	}
 	
-	
 	/**
 	 * actionPerformer 
 	 */

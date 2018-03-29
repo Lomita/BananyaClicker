@@ -57,7 +57,6 @@ public class ClickerInterface extends JFrame implements ActionListener
 		
 		limg = new JLabel();
 		limg.setBounds(0,0,FrameWidth, FrameHeight);
-		//limg.setIcon(IFH.loadImg("images/Bananyaception.jpg")); 
 	
 		bEnd = new JButton();
 		bEnd.setBounds(2,2,100,100);
@@ -84,10 +83,10 @@ public class ClickerInterface extends JFrame implements ActionListener
 		
 		lCount.setFont(new Font("Arial", Font.CENTER_BASELINE, 25));
 		lCount.setForeground(Color.black);
-
+		
 		bBananya = new JButton ();
 		bBananya.setSize(100,100);
-		bBananya.setIcon(IFH.loadImg("images/auto.png"));
+		bBananya.setIcon(IFH.loadImg("images/" + color +".png"));
 		bBananya.setContentAreaFilled(false);
 		bBananya.setBorder(null);
 
