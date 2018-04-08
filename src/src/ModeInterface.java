@@ -56,9 +56,15 @@ public class ModeInterface extends JFrame implements ActionListener
 
 		bStandard = new JButton("Standard Mode!");
 		bStandard.setBounds(130,300,300,100);
+		bStandard.setBackground(Color.WHITE);
+		bStandard.setFocusPainted(false);		
 		
 		bTime = new JButton("Time Mode!");
 		bTime.setBounds(530,300,300,100);
+		bTime.setBackground(Color.BLACK);
+		bTime.setForeground(Color.WHITE);
+		bTime.setFocusPainted(false);
+		
 		
 		lmode = new JLabel("Choose Mode");
 		lmode.setBounds(100,50,500,150);
@@ -78,6 +84,9 @@ public class ModeInterface extends JFrame implements ActionListener
 		bTime.addActionListener(this);
 	}
 	
+	/**
+	 * creats the time box
+	 */
 	public void SendTimeBox()
 	{
 		TimeBox = new JFrame();
@@ -118,11 +127,13 @@ public class ModeInterface extends JFrame implements ActionListener
 			ci.creatInterface();
 			ci.OsuMoveButton();
 		}
+		
 		else if(event.getSource() == bTime)
 		{
 			mainWnd.dispose();
 			SendTimeBox();
 		}
+		
 		else if(event.getSource() == bok)
 		{
 			if(tftime.getText().matches("[0-9]*"))
@@ -137,7 +148,6 @@ public class ModeInterface extends JFrame implements ActionListener
 					ci.OsuMoveButton();
 				}
 			}
-
 		}
 	}	
 }

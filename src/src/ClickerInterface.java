@@ -24,7 +24,6 @@ public class ClickerInterface extends JFrame implements ActionListener
 
 	private JList<String> list;
 	
-	@SuppressWarnings("unused")
 	private int count = 0, time = 0, Rtime, FrameHeight, FrameWidth; 		
 	private boolean isTimeMode;
 	private String name, color;
@@ -103,6 +102,7 @@ public class ClickerInterface extends JFrame implements ActionListener
 	
 	/**
 	 * set timeMode true and time
+	 * @param time
 	 */
 	public void setTime(int time)
 	{
@@ -156,8 +156,8 @@ public class ClickerInterface extends JFrame implements ActionListener
 		}
 
 		lGreat = new JLabel("GREAT JOB!");
-		lGreat.setBounds(680,300,400,100);
-		lGreat.setFont(new Font("Arial", Font.BOLD, 40));
+		lGreat.setBounds(740,400,400,100);
+		lGreat.setFont(new Font("Arial", Font.BOLD, 60));
 
 		String Msg;
 		
@@ -169,17 +169,22 @@ public class ClickerInterface extends JFrame implements ActionListener
 		String[] data = {"Player: " + name ,Msg ,"Bananya Color: " + color};
 	    
 		list = new JList<String>(data);
-	    list.setLocation(670,400);
-	    list.setSize(450,125);
+	    list.setLocation(730,500);
+	    list.setSize(400,100);
 		list.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));
 		
 		bBackToMenu = new JButton ("Back to menu");
-		bBackToMenu.setBounds(720,600,200,50);
+		bBackToMenu.setBounds(830,620,200,50);
 		bBackToMenu.setFont(new Font("Arial", Font.CENTER_BASELINE, 24));
+		
+		limg = new JLabel();
+		limg.setBounds(0,0,FrameWidth, FrameHeight);
+		limg.setIcon(IFH.loadImg("images/Bananyaception.jpg")); 
 		
 		mainWnd.add(lGreat);
 		mainWnd.add(bBackToMenu);
 		mainWnd.add(list);
+		mainWnd.add(limg);
 		
 		mainWnd.repaint();
 		
@@ -226,6 +231,6 @@ public class ClickerInterface extends JFrame implements ActionListener
 			menu.setName(name);
 			menu.setColor(getIndexFromColor(color));
 			menu.createInterface();
-		}	
+		}
 	}
 }

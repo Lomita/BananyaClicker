@@ -19,7 +19,7 @@ public class StartInterface extends JFrame implements ActionListener
 	private JButton bstartGame, bexit;
 	private JTextField tfname;
 	private JComboBox<String> cbrace;
-	private JLabel limg, ltitel;
+	private JLabel limg, ltitel, lusername, ltype;
 	private String name, race;
 	
 	private int idx;
@@ -49,40 +49,51 @@ public class StartInterface extends JFrame implements ActionListener
 		int width, height;
 		width = mainWnd.getWidth();
 		height = mainWnd.getHeight();
+	
+		ltitel = new JLabel("");
+		ltitel.setBounds(130,50,600,129);
+		ltitel.setIcon(IFH.loadImg("images/BananyaClicker.png")); 
 		
 		limg = new JLabel();
 		limg.setBounds(0,0,width,height);
 		limg.setIcon(IFH.loadImg("images/bg.png")); 
 		
-		ltitel = new JLabel("Bananya Clicker");
-		ltitel.setBounds(150,50,500,150);
+		lusername = new JLabel("Username");
+		lusername.setBounds(150,200,150,35);
 		
+		ltype = new JLabel("Bananya's color");
+		ltype.setBounds(150,250,150,35);
+
 		tfname = new JTextField(name);
-		tfname.setBounds(150,200,150,35);		
+		tfname.setBounds(330,200,150,35);		
 		
 		String[] raceStr = {"Blue Bananya","Red Bananya","Black Bananya","White Bananya"};
 		cbrace = new JComboBox<String>(raceStr);
-		cbrace.setBounds(150,250,150,45);
+		cbrace.setBounds(330,255,150,35);
 		cbrace.setSelectedIndex(idx);
 			
 		bstartGame = new JButton("Start");
-		bstartGame.setBounds(150,430,250,50);
+		bstartGame.setBounds(150,430,350,50);
 		
 		bexit = new JButton("Exit");
 		bexit.setBounds(700,430,80,50);
 		
-		ltitel.setFont(new Font("Arial", Font.CENTER_BASELINE, 46));
+		lusername.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
+		ltype.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
 		tfname.setFont(new Font("Arial", Font.CENTER_BASELINE, 14));
 		cbrace.setFont(new Font("Arial", Font.CENTER_BASELINE, 14));
 		bstartGame.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
 		bexit.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
 		
-		mainWnd.add(ltitel);
 		mainWnd.add(tfname);
+		mainWnd.add(ltype);
+		mainWnd.add(lusername);
 		mainWnd.add(cbrace);
 		mainWnd.add(bstartGame);
 		mainWnd.add(bexit);
+		mainWnd.add(ltitel);
 		mainWnd.add(limg);
+		
 	
 		mainWnd.setResizable(false);
 		mainWnd.setVisible(true);
@@ -94,8 +105,6 @@ public class StartInterface extends JFrame implements ActionListener
 	
 	/**
 	 * send a messagebox
-	 * @param msg
-	 * @param jframe
 	 */
 	private void SendMsgBox()
 	{
@@ -113,11 +122,19 @@ public class StartInterface extends JFrame implements ActionListener
 		msgBox.setVisible(true);
 	}
 	
+	/**
+	 * set the name
+	 * @param name
+	 */
 	public void setName(String name)
 	{
 		this.name = name;
 	}
 	
+	/**
+	 * set the selected index for the cbrace combo box
+	 * @param idx
+	 */
 	public void setColor(int idx)
 	{
 		this.idx = idx;

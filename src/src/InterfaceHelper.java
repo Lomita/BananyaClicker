@@ -1,5 +1,4 @@
 package src;
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,7 +7,7 @@ import javax.swing.*;
  * @author Miruku
  *
  */
-public class InterfaceHelper 
+public class InterfaceHelper
 {
 	/**
 	 * Get image from path
