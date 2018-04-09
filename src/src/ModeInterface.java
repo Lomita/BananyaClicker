@@ -52,19 +52,18 @@ public class ModeInterface extends JFrame implements ActionListener
 		
 		limg = new JLabel();
 		limg.setBounds(0,0,width, height);
-		limg.setIcon(IFH.loadImg("images/ModeBackg.jpg")); 
+		limg.setIcon(IFH.loadImg("images/ModeBackg.png")); 
 
 		bStandard = new JButton("Standard Mode!");
-		bStandard.setBounds(130,300,300,100);
+		bStandard.setBounds(100,300,300,100);
 		bStandard.setBackground(Color.WHITE);
 		bStandard.setFocusPainted(false);		
 		
 		bTime = new JButton("Time Mode!");
-		bTime.setBounds(530,300,300,100);
+		bTime.setBounds(540,300,300,100);
 		bTime.setBackground(Color.BLACK);
 		bTime.setForeground(Color.WHITE);
 		bTime.setFocusPainted(false);
-		
 		
 		lmode = new JLabel("Choose Mode");
 		lmode.setBounds(100,50,500,150);
