@@ -5,7 +5,7 @@ import javax.swing.*;
 
 /**
  * StartInterface class
- * @author Miruku
+ * @author Silian Barlogis
  * contains the interface for the start Dialog
  */
 @SuppressWarnings("serial")
