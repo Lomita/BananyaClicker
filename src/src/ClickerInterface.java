@@ -7,7 +7,7 @@ import javax.swing.*;
 
 /**
  * StartInterface class
- * @author Miruku
+ * @author Silian Barlogis
  * contains the interface for the Bananya Clicker frame
  */
 @SuppressWarnings("serial")
@@ -162,9 +162,9 @@ public class ClickerInterface extends JFrame implements ActionListener
 		String Msg;
 		
 		if(isTimeMode)
-			Msg = "Bananya's catched: " + count + " in " + Rtime + "s ";
+			Msg = "Bananya's caught: " + count + " in " + Rtime + "s ";
 		else
-			Msg = "Bananya's catched: " + count;
+			Msg = "Bananya's caught: " + count;
 		
 		String[] data = {"Player: " + name ,Msg ,"Bananya Color: " + color};
 	    

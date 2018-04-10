@@ -4,8 +4,8 @@ import javax.swing.*;
 
 /**
  * Interface Helper class
- * @author Miruku
- *
+ * @author Silian Barlogis
+ * contains functions for interfaces
  */
 public class InterfaceHelper
 {

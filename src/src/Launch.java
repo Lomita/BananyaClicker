@@ -2,7 +2,7 @@ package src;
 
 /**
  *	main class 
- * @author Miruku
+ * @author Silian Barlogis
  *	starts the application
  */
 public class Launch 

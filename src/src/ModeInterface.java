@@ -5,7 +5,7 @@ import javax.swing.*;
 
 /**
  * ModeInterface class
- * @author Miruku
+ * @author Silian Barlogis
  * contains the interface for the start Dialog
  */
 @SuppressWarnings("serial")
@@ -92,7 +92,7 @@ public class ModeInterface extends JFrame implements ActionListener
 		
 		TimeBox.setSize(mainWnd.getWidth() / 4, mainWnd.getHeight() / 4);
 		TimeBox.setLocation(ScreenWidth / 2, ScreenHeight / 2);
-		TimeBox.setLayout(new BorderLayout());
+		TimeBox.setLayout(new GridLayout(3, 1));
 		TimeBox.setUndecorated(true);
 		
 		tftime = new JTextField(time); 
@@ -106,9 +106,9 @@ public class ModeInterface extends JFrame implements ActionListener
 		bok.setBounds(0,400,50,50);
 		bok.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
 		
-		TimeBox.add(lmsg, BorderLayout.WEST);
-		TimeBox.add(tftime, BorderLayout.CENTER);
-		TimeBox.add(bok, BorderLayout.EAST);
+		TimeBox.add(lmsg);
+		TimeBox.add(tftime);
+		TimeBox.add(bok);
 		TimeBox.setVisible(true);
 		
 		bok.addActionListener(this);
@@ -134,8 +134,8 @@ public class ModeInterface extends JFrame implements ActionListener
 		}
 		
 		else if(event.getSource() == bok)
-		{
-			if(tftime.getText().matches("[0-9]*"))
+		{	
+			if(tftime.getText().matches("[0-9]*") && !(tftime.getText().equals("")))
 			{
 				time = Integer.parseInt(tftime.getText());
 				if (!(time <= 0))
