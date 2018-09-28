@@ -59,7 +59,7 @@ public class ClickerInterface extends JFrame implements ActionListener
 	
 		bEnd = new JButton();
 		bEnd.setBounds(2,2,100,100);
-		bEnd.setIcon(IFH.loadImg("images/Button_exit.png"));
+		bEnd.setIcon(IFH.loadImg("images/button_exit.png"));
 		bEnd.setContentAreaFilled(false);
 		bEnd.setBorder(null);
 
